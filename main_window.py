@@ -5,7 +5,7 @@ import requests
 from dotenv import load_dotenv
 from geopy.geocoders import Nominatim
 from PySide6.QtGui import QPixmap
-from PySide6.QtWidgets import QMainWindow
+from PySide6.QtWidgets import QMainWindow, QLabel, QFrame, QVBoxLayout, QHBoxLayout
 
 from ui_climate_sense import Ui_MainWindow
 
@@ -164,4 +164,4 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.entry_label.setText("Please enter your location")
             self.weather_frame.hide()
 
-        
+

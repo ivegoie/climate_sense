@@ -25,9 +25,9 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(667, 650)
-        MainWindow.setMinimumSize(QSize(600, 650))
-        MainWindow.setMaximumSize(QSize(667, 600))
+        MainWindow.resize(650, 500)
+        MainWindow.setMinimumSize(QSize(650, 500))
+        MainWindow.setMaximumSize(QSize(650, 500))
         self.actionQuit = QAction(MainWindow)
         self.actionQuit.setObjectName(u"actionQuit")
         self.actionAbout = QAction(MainWindow)
@@ -78,6 +78,10 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.city_entry.sizePolicy().hasHeightForWidth())
         self.city_entry.setSizePolicy(sizePolicy2)
         self.city_entry.setMaximumSize(QSize(300, 40))
+        font1 = QFont()
+        font1.setFamilies([u"Montserrat"])
+        font1.setPointSize(15)
+        self.city_entry.setFont(font1)
         self.city_entry.setStyleSheet(u"border-radius: 15px;\n"
 "border: 1px solid white;\n"
 "padding-left: 10px;\n"
@@ -89,9 +93,6 @@ class Ui_MainWindow(object):
 
         self.submit_button = QPushButton(self.entry_frame)
         self.submit_button.setObjectName(u"submit_button")
-        font1 = QFont()
-        font1.setFamilies([u"Montserrat"])
-        font1.setPointSize(15)
         self.submit_button.setFont(font1)
         self.submit_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.submit_button.setStyleSheet(u"background: transparent;\n"
@@ -122,6 +123,11 @@ class Ui_MainWindow(object):
         self.info_layout.setObjectName(u"info_layout")
         self.city_name = QLabel(self.weather_frame)
         self.city_name.setObjectName(u"city_name")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.city_name.sizePolicy().hasHeightForWidth())
+        self.city_name.setSizePolicy(sizePolicy3)
         font2 = QFont()
         font2.setFamilies([u"Montserrat"])
         font2.setPointSize(38)
@@ -134,11 +140,11 @@ class Ui_MainWindow(object):
 
         self.weather_icon = QLabel(self.weather_frame)
         self.weather_icon.setObjectName(u"weather_icon")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.weather_icon.sizePolicy().hasHeightForWidth())
-        self.weather_icon.setSizePolicy(sizePolicy3)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.weather_icon.sizePolicy().hasHeightForWidth())
+        self.weather_icon.setSizePolicy(sizePolicy4)
         self.weather_icon.setStyleSheet(u"")
         self.weather_icon.setAlignment(Qt.AlignCenter)
 
@@ -202,6 +208,8 @@ class Ui_MainWindow(object):
 
         self.description = QLabel(self.weather_frame)
         self.description.setObjectName(u"description")
+        sizePolicy3.setHeightForWidth(self.description.sizePolicy().hasHeightForWidth())
+        self.description.setSizePolicy(sizePolicy3)
         font3 = QFont()
         font3.setFamilies([u"Montserrat"])
         font3.setPointSize(13)
@@ -210,41 +218,6 @@ class Ui_MainWindow(object):
         self.description.setAlignment(Qt.AlignCenter)
 
         self.info_layout.addWidget(self.description)
-
-        self.days_layout = QHBoxLayout()
-        self.days_layout.setObjectName(u"days_layout")
-        self.day_frame = QFrame(self.weather_frame)
-        self.day_frame.setObjectName(u"day_frame")
-        sizePolicy3.setHeightForWidth(self.day_frame.sizePolicy().hasHeightForWidth())
-        self.day_frame.setSizePolicy(sizePolicy3)
-        self.day_frame.setStyleSheet(u"")
-        self.day_frame.setFrameShape(QFrame.StyledPanel)
-        self.day_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_5 = QVBoxLayout(self.day_frame)
-        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.date = QLabel(self.day_frame)
-        self.date.setObjectName(u"date")
-        self.date.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_5.addWidget(self.date)
-
-        self.icon = QLabel(self.day_frame)
-        self.icon.setObjectName(u"icon")
-        self.icon.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_5.addWidget(self.icon)
-
-        self.min_max_temperature = QLabel(self.day_frame)
-        self.min_max_temperature.setObjectName(u"min_max_temperature")
-        self.min_max_temperature.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_5.addWidget(self.min_max_temperature)
-
-
-        self.days_layout.addWidget(self.day_frame, 0, Qt.AlignVCenter)
-
-
-        self.info_layout.addLayout(self.days_layout)
 
 
         self.verticalLayout_3.addLayout(self.info_layout)
@@ -255,7 +228,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.central_widget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 667, 21))
+        self.menubar.setGeometry(QRect(0, 0, 650, 21))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuHelp = QMenu(self.menubar)
@@ -287,9 +260,6 @@ class Ui_MainWindow(object):
         self.sunrise.setText(QCoreApplication.translate("MainWindow", u"sunrise", None))
         self.sunset.setText(QCoreApplication.translate("MainWindow", u"sunset", None))
         self.description.setText(QCoreApplication.translate("MainWindow", u"description", None))
-        self.date.setText(QCoreApplication.translate("MainWindow", u"date", None))
-        self.icon.setText(QCoreApplication.translate("MainWindow", u"weather_icon", None))
-        self.min_max_temperature.setText(QCoreApplication.translate("MainWindow", u"min_max", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.menuHelp.setTitle(QCoreApplication.translate("MainWindow", u"Help", None))
     # retranslateUi
