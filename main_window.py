@@ -4,6 +4,7 @@ from functools import partial
 import requests
 from dotenv import load_dotenv
 from geopy.geocoders import Nominatim
+from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import QMainWindow
 
 from ui_climate_sense import Ui_MainWindow
@@ -19,11 +20,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.geocode = partial(self.geolocator.geocode)
         
         image_path = os.path.join("images", "background.png")
-        self.setStyleSheet(f"background-image: url({image_path}); background-repeat: no-repeat; background-position: center;")
+        self.setStyleSheet("QMainWindow { background-image: url(" + image_path + "); background-repeat: no-repeat;}")
         
         self.weather_frame.hide()
-        self.loading_frame.hide()
-
         
         self.submit_button.clicked.connect(self.on_button_submit)
         
@@ -45,8 +44,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.show_weather_info()
     
     def show_weather_info(self):
-        self.weather_frame.show()
-        self.city_name.setText(self.get_city_name.capitalize())
+        self.city_name.setText(self.get_city_name.title())
+        self.entry_label.setText("Search for your location")
         
         get_temperature = f"Temperature : {self.city_info['currentConditions']['temp']:.0f} °C"
         get_feels_like = f"Feels like : {self.city_info['currentConditions']['feelslike']:.0f} °C"
@@ -60,4 +59,109 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sunset.setText(get_sunset)
         self.description.setText(self.city_info['description'])
         self.weather_icon.setText(get_weather_icon_text)
+        
+        match get_weather_icon_text:
+            case 'clear-night':
+                image_path = os.path.join("images", "night_full_moon_clear.png")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+                
+            case 'clear-day':
+                image_path = os.path.join("images", "day_clear")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+                
+            case 'partly-cloudy-night':
+                image_path = os.path.join("images", "night_full_moon_partial_cloud.png")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+                
+            case 'partly-cloudy-day':
+                image_path = os.path.join("images", "day_partial_cloud.png")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+                
+            case 'cloudy':
+                image_path = os.path.join("images", "cloudy.png")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+                
+            case 'wind':
+                image_path = os.path.join("images", "wind.png")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+                
+            case 'fog':
+                image_path = os.path.join("images", "fog.png")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
 
+        
+            case 'showers-night':
+                image_path = os.path.join("images", "night_full_moon_rain.png")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+        
+            case 'showers-day':
+                image_path = os.path.join("images", "day_rain")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+                
+            case 'rain':
+                image_path = os.path.join("images", "rain")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+                
+            case 'thunder-showers-night':
+                image_path = os.path.join("images", "night_full_moon_rain_thunder.png")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+                
+            case 'thunder-showers-day':
+                image_path = os.path.join("images", "dday_rain_thunder.png")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+                
+            case 'thunder-rain':
+                image_path = os.path.join("images", "rain_thunder.png")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+                
+            case 'snow-showers-night':
+                image_path = os.path.join("images", "night_full_moon_sleet.png")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+                
+            case 'snow-showers-day':
+                image_path = os.path.join("images", "day_sleet.png")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+                
+            case 'snow':
+                image_path = os.path.join("images", "snow.png")
+                pixmap = QPixmap(image_path)
+                
+                self.weather_icon.setPixmap(pixmap)
+
+        self.weather_frame.show()
+        
+        if self.get_city_name == "":
+            self.entry_label.setText("Please enter your location")
+            self.weather_frame.hide()
+
+        

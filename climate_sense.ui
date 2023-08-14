@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>650</width>
-    <height>600</height>
+    <width>667</width>
+    <height>650</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>650</width>
-    <height>600</height>
+    <width>600</width>
+    <height>650</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -28,7 +28,7 @@
   <widget class="QWidget" name="central_widget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <widget class="QFrame" name="frame">
+     <widget class="QFrame" name="entry_frame">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -46,7 +46,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="entry_label">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -59,7 +59,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Enter your location</string>
+          <string>Search for your location</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -67,7 +67,7 @@
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
+        <layout class="QHBoxLayout" name="entry_layout">
          <item>
           <spacer name="horizontalSpacer">
            <property name="orientation">
@@ -103,7 +103,7 @@
 border: 1px solid white;
 padding-left: 10px;
 height: 40px;
-</string>
+background: transparent;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -172,9 +172,12 @@ border-radius: 15px;</string>
            <property name="font">
             <font>
              <family>Montserrat</family>
-             <pointsize>30</pointsize>
+             <pointsize>38</pointsize>
              <bold>false</bold>
             </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>city_name</string>
@@ -186,6 +189,15 @@ border-radius: 15px;</string>
          </item>
          <item>
           <widget class="QLabel" name="weather_icon">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
            <property name="text">
             <string>weather_icon</string>
            </property>
@@ -219,6 +231,9 @@ border-radius: 15px;</string>
                <family>Montserrat</family>
                <pointsize>15</pointsize>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>feels_like</string>
@@ -341,6 +356,9 @@ border-radius: 15px;</string>
              <pointsize>13</pointsize>
             </font>
            </property>
+           <property name="styleSheet">
+            <string notr="true">padding: 10px 0px;</string>
+           </property>
            <property name="text">
             <string>description</string>
            </property>
@@ -350,40 +368,17 @@ border-radius: 15px;</string>
           </widget>
          </item>
          <item>
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Fixed</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="Line" name="line">
-           <property name="styleSheet">
-            <string notr="true">Line {
-	border-top: 1px solid gray;
-}</string>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
           <layout class="QHBoxLayout" name="days_layout">
            <item alignment="Qt::AlignVCenter">
             <widget class="QFrame" name="day_frame">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="styleSheet">
-              <string notr="true">margin-top: 5px;
-margin-bottom: 5px;</string>
+              <string notr="true"/>
              </property>
              <property name="frameShape">
               <enum>QFrame::StyledPanel</enum>
@@ -429,36 +424,6 @@ margin-bottom: 5px;</string>
          </item>
         </layout>
        </item>
-       <item>
-        <widget class="QFrame" name="loading_frame">
-         <property name="styleSheet">
-          <string notr="true">border: none;</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <item>
-           <widget class="QLabel" name="loading_label">
-            <property name="font">
-             <font>
-              <pointsize>20</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Loading........</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
       </layout>
      </widget>
     </item>
@@ -469,7 +434,7 @@ margin-bottom: 5px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>650</width>
+     <width>667</width>
      <height>21</height>
     </rect>
    </property>
@@ -489,7 +454,6 @@ margin-bottom: 5px;</string>
    <addaction name="menuFile"/>
    <addaction name="menuHelp"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="actionQuit">
    <property name="text">
     <string>Quit</string>
